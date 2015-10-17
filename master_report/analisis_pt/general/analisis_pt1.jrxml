@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="analisis_pt1" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c0930ca2-e374-4adc-bf44-3914a9037c47">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fechaInicial" class="java.lang.String"/>
+	<parameter name="fechaFinal" class="java.lang.String"/>
+	<parameter name="folio" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     REGISTRO.`ID_ANALISIS` AS registro_ID_ANALISIS,
+     REGISTRO.`NOMBRE` AS registro_NOMBRE,
+     REGISTRO.`LOTE` AS registro_LOTE,
+     REGISTRO.`CANTIDAD` AS registro_CANTIDAD
+FROM
+     `REGISTRO` REGISTRO
+WHERE
+     FECHA > $P{fechaInicial}
+ AND FECHA < $P{fechaFinal}
+ AND NOMBRE IN ( SELECT NOMBRE FROM `PRODUCTO` WHERE TIPO = 'PT' )
+ORDER BY ID_ANALISIS]]>
+	</queryString>
+	<field name="registro_ID_ANALISIS" class="java.lang.Integer"/>
+	<field name="registro_NOMBRE" class="java.lang.String"/>
+	<field name="registro_LOTE" class="java.lang.String"/>
+	<field name="registro_CANTIDAD" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement x="57" y="38" width="443" height="20" uuid="b6fa00a6-767d-4807-8874-42044bc6b643"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE MENSUAL  DE ANALISIS DE PRODUCTO TERMINADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="0" width="268" height="21" uuid="42e88236-3a50-4184-87e8-37d3c990aa52"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROSID DE MEXICO S.A. DE C.V.]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="30">
+			<staticText>
+				<reportElement x="434" y="0" width="34" height="20" uuid="91468733-9a74-4d2f-a1c2-dd6517e05901"/>
+				<text><![CDATA[Folio:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="468" y="0" width="97" height="20" uuid="cb0fb6cc-a036-4402-844e-a75bd6025dad"/>
+				<textFieldExpression><![CDATA[$P{folio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" x="250" y="0" width="80" height="10" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" uuid="745e71fa-4679-466a-b8c8-d0a71216b5ba"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CANTIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" x="170" y="0" width="80" height="10" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" uuid="8088c835-330f-42c3-889f-1f101537659d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LOTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" x="330" y="0" width="124" height="10" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" uuid="5c9c1990-2fd0-44e4-9197-24d7661083b9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ACEPTADO Y/O RECHAZADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" x="10" y="0" width="80" height="10" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" uuid="a7a45748-c927-412e-ba29-5a8bf3ec3396"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO DE ANALISIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" x="90" y="0" width="80" height="10" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true" uuid="4d6da699-b11f-4009-8815-7ec7275253f0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="10" width="124" height="10" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" uuid="53468703-75bc-4ca6-84e2-d19eb1c5db37"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ACEPTADO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="10" y="10" width="80" height="10" uuid="6719abcb-984e-4fa1-b770-ecb59aaddc7c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registro_ID_ANALISIS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="10" width="80" height="10" uuid="45a24af2-4256-4a35-a072-e6a4210f129b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registro_NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="170" y="10" width="80" height="10" uuid="b09e1e1d-0f68-41ee-b3bb-55d5681a7313"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registro_LOTE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="250" y="10" width="80" height="10" uuid="eebc3dac-0f1c-408c-b63e-78c6167b954c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registro_CANTIDAD}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement x="222" y="44" width="131" height="20" uuid="55752cf3-d6fe-4651-9dfe-0ec32053c54b"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Quality Control]]></text>
+			</staticText>
+			<line>
+				<reportElement x="222" y="43" width="131" height="1" uuid="e781c5c1-9fee-4bd8-9728-e6cd2bb4f15c"/>
+			</line>
+		</band>
+	</pageFooter>
+</jasperReport>
