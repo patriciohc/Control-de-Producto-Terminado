@@ -50,8 +50,6 @@ public class Producto implements Registro
         this.id = id;
     }
     
-    
-
     public Producto(int id, String nombre, String  clientProv, String tipo, 
                 int caducidad, ArrayList<String> grupos, String fileJasper )
     {
@@ -140,8 +138,7 @@ public class Producto implements Registro
         else return info;
     }
     
-    
-       // metodo que verifica que el material este dentro de analisis tipico
+    // metodo que verifica que el material este dentro de analisis tipico
     public String check(ArrayList<Object[]> datos, Connection c)throws SQLException
     {
         if (!tipicosIsLoad) 
@@ -168,8 +165,7 @@ public class Producto implements Registro
             return info;
         }
     }
-    
-    
+      
     public boolean save(Connection c) throws SQLException 
     {
         String query =  String.format("INSERT INTO producto(NOMBRE, "
@@ -221,8 +217,7 @@ public class Producto implements Registro
         new Sentence(query, c).exec();
         return true;
     }
-    
-    
+     
     public String getNombre()
     {
         return nombre;

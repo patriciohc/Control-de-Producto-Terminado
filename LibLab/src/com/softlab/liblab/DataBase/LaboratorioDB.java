@@ -53,8 +53,6 @@ public class LaboratorioDB
     }
 
     // regresa un Producto 
-    //public Producto getProducto(String nombre){return prods.getProducto(nombre);}
-
     // retorna el siguiente numero de analisis de la tabla REGISTRO
     public int sgtNoAnalisis()
     {
@@ -163,8 +161,6 @@ public class LaboratorioDB
         return null;
     }
 
-    
-
     public ResultSet getAnalisis(int año,String producto, String tabla)
     {
         Fecha i = new Fecha(año);
@@ -203,7 +199,6 @@ public class LaboratorioDB
         return null;
     }
     
-
     // regresa los embarques que coinciden con los parametros recividos
     public ResultSet getEmbarques(int limit, String producto, String cliente)
     {
@@ -343,7 +338,6 @@ public class LaboratorioDB
         return mensaje;
     }
 
-
 // crea el certificado de calidad del numero de analisis recibido
     public JasperPrint getCertificadoId(int id_analisis, Producto producto) 
     throws SQLException, JRException, Exception
@@ -394,7 +388,6 @@ public class LaboratorioDB
         }
         return idAnalisis+": "+info+"\n";
     }
-
 
     /* genera reporte segun su parametro reporte
     public void genReporte(String reporte, HashMap datos, String dir, String formato)
@@ -452,9 +445,7 @@ public class LaboratorioDB
    // public ArrayList<String> getPTs(){return prods.getMp();}
   // regresa un ResultSet con todo la materia prima en la tabla REGISTRO_STATIC
   //  public ArrayList<String> getMPs(){return prods.getMp();}
-
-
-   
+    
     // inserta el idAnalisis del producto indicado en las tablas que le correspondes
     public void actTablas(Producto producto)
     {
@@ -477,7 +468,7 @@ public class LaboratorioDB
         }
     }
     
-        // inserta el idAnalisis del producto indicado en las tablas que le correspondes
+    // inserta el idAnalisis del producto indicado en las tablas que le correspondes
     public void actTablas(int idAnalisis, Producto p)
     {
         ArrayList<Grupo> grupos = p.getGrupos();
@@ -491,10 +482,8 @@ public class LaboratorioDB
             }
         }
     }
-    
-    
-    
-       // regresa un ResultSet con la consulta 
+       
+    // regresa un ResultSet con la consulta 
     public ResultSet query(String consulta)
     {
         ResultSet r = null;
@@ -507,7 +496,6 @@ public class LaboratorioDB
             return null;
         }
     }
-    
     
     public int execute(String consulta)
     {
@@ -566,10 +554,5 @@ public class LaboratorioDB
         }
         
     }*/
-    
-    
-
-
-
 }
  

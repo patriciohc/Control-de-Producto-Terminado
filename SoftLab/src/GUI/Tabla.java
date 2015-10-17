@@ -37,10 +37,9 @@ public class Tabla extends DefaultTableModel{
     public Tabla()
     {
         super();
-    } 
+    }
     
-    
-        // llena el DefaultTableModel con el ResultSet apartir del n
+    // llena el DefaultTableModel con el ResultSet apartir del n
     public boolean fill(ResultSet rs )
     {
         int noRow = 0;
@@ -73,7 +72,6 @@ public class Tabla extends DefaultTableModel{
         }
     }
     
-
     public void clear(){
         int filas = this.getRowCount();
         for(int i = 1; i<=filas; i++) this.removeRow(0);

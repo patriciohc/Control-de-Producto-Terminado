@@ -141,8 +141,7 @@ public class Login extends javax.swing.JFrame {
         Interfaz1 interfaz1 = new Interfaz1(m_s);
         }catch(Exception e){}
     }
-    
-    
+      
     public static void main(String args[]) {
           try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -169,8 +168,7 @@ public class Login extends javax.swing.JFrame {
                 new Login().setVisible(true);
             }
         });
-        
-            
+              
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

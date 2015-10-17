@@ -46,7 +46,6 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 public class GenReportes
 {
-    
     private ProductList prodList;
     private ArrayList<String> productos; //guarda los nombres de los productos
     private ArrayList<String> materiaPrima; //guarda los nombres de la materia prima
@@ -56,7 +55,7 @@ public class GenReportes
     private static final String mallas[] = {
                 "PAN","M100","M80","M60","M50","M20","M10","M4","M2","M1"
             };
-
+    
     public GenReportes(ProductList prods)
     {
         this.prodList = prods;
@@ -73,9 +72,7 @@ public class GenReportes
         
         nameReport.put("MATERIA PRIMA","archivo_jasper");
     }
-
-
-
+    
 // reporte mensual de producto terminado, recibe año y mes 	
     private JasperPrint[] getReporteMensualPt(int año, int mes, Connection cnn, HashMap datos)
     {
@@ -114,8 +111,7 @@ public class GenReportes
         }
         return reporte; 
     }
-    
-    
+     
 // funcion auxiliar para reporte mensula de producto terminado y materia prima
     private void auxReporteMensual(int año, int mes, String tipo, HashMap datos)
     {
@@ -131,8 +127,7 @@ public class GenReportes
         datos.put("fechaFinal",fecha.getFormMySQL());
         
     }
-
-    
+  
 // "reporte individual de producto terminado anual o materia prima " segun la variable tipo, 
 //  para todos los materiales si es null su segundo Parametro.
     public void runReporteIndividual(int año, String material, String tipo, Connection cnn)
@@ -222,10 +217,8 @@ public class GenReportes
         } catch(Exception e) {
             System.out.println("error al agregar garfico al xls: "+e);
         } 
-   }
-    
-    
-    
+    }
+     
     private HashMap auxReporteIndividual(int año)
     {
         HashMap datos = new HashMap();
@@ -239,9 +232,7 @@ public class GenReportes
         System.out.println("fecha final: "+fechaFin.getFormMySQL());
         return datos;
     }
-
-
-
+    
     // genera reporte segun su parametro reporte
     public void genReporte(String reporte, HashMap datos, String dir, 
             String formato, Connection cnn)
@@ -254,7 +245,6 @@ public class GenReportes
             System.out.println("Error en funcion genReporte: "+ex);
         }
     }
-
 
     public JasperPrint getJasperPrint(HashMap datos, String reporte, Connection cnn)
     {
@@ -329,9 +319,7 @@ public class GenReportes
             return "";
     }
 
-    
     /******************* Cotrol de calidad *****************/
-
     public ArrayList <byte[]> graficos(String material, int año,ArrayList<String> graf)
     {
         System.out.println("Creando graficos..");
@@ -388,7 +376,6 @@ public class GenReportes
         return grs;
     }
     
-    
     private double[] convertArray(ArrayList<Double> r)
     {
         int t = r.size();
@@ -398,8 +385,7 @@ public class GenReportes
         }
         return n;
     }
-    
-    
+       
     private ArrayList[] getSumaGran(ResultSet r, int[] m) throws SQLException
     {
         //String mallas[] = {"M1","M2","M4","M10","M20","M50","M60","M80","M100","PAN"};
@@ -425,8 +411,6 @@ public class GenReportes
         } // fin while
         return lista;
     }
-    
-    
     
     private Object[] descomponer(String s)
     {
@@ -467,9 +451,7 @@ public class GenReportes
         }
         return newNombre;
     }
-
     
-
 }
 
 class configReport
@@ -493,9 +475,7 @@ class configReport
         while(nextProd());
         return prod;
     }
-    
-    
-    
+      
     private boolean nextProd() 
     {
         String linea,nombre = null;
@@ -538,6 +518,5 @@ class configReport
             return true;
         }catch(Exception e){System.out.println("error: "+e);return false;}
      }
-    
-    
+     
 }

@@ -20,18 +20,17 @@
 
 package GUI;
 
-public class TablaRegistro extends Tabla{
-    
-
+public class TablaRegistro extends Tabla
+{    
     TablaRegistro(Object[][] object, String... string)
     {
         super(object,string);
     }
     
     @Override
-   public boolean isCellEditable (int row, int column)
-   {
+    public boolean isCellEditable (int row, int column)
+    {
         if (column == 4)return false;
         else return true;
-   }
+    }
 }

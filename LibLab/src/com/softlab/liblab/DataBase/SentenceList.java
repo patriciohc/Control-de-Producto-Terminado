@@ -21,8 +21,7 @@
 package com.softlab.liblab.DataBase;
 
 public class SentenceList
-{
-    
+{   
     // busca coincidencias en la tabla producto con respecto al nombre
     //de los productos regitrados
     public static String prediccion(String nombre)
@@ -32,14 +31,12 @@ public class SentenceList
                   + " WHERE NOMBRE LIKE '"+nombre+"%'";
         return query;   
     }
-
-        
+ 
     //elimina registro
     public static String eliminarDato(String tabla, String nameKey, int key)
     {
         return String.format("DELETE FROM %s WHERE %s = %d", tabla, nameKey, key);
     }
-    
     
 // regresa lo registrado con la fecha indicada
     public static String getRegistrosFecha(String f)
@@ -57,7 +54,7 @@ public class SentenceList
     }
     
   // regresa el numero de elementos 
-   public static String getCount(String tabla)
+    public static String getCount(String tabla)
     {       
         return String.format("SELECT COUNT(*) AS n FROM %s",tabla);
     }

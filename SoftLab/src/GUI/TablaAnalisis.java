@@ -25,9 +25,8 @@ import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class TablaAnalisis extends Tabla{
-    
-    
+public class TablaAnalisis extends Tabla
+{       
     private int nRows;
     private HashMap<String,Integer> pos;
     
@@ -38,7 +37,6 @@ public class TablaAnalisis extends Tabla{
         pos = new HashMap<String, Integer>();
     }
     
-
     @Override
     public boolean fill(ResultSet rs) 
     {
@@ -68,7 +66,6 @@ public class TablaAnalisis extends Tabla{
         }
     }
     
-    
     @Override
     public void clear(){
         int filas = this.getRowCount();
@@ -77,8 +74,7 @@ public class TablaAnalisis extends Tabla{
         nRows = 0;
         pos.clear();
     }
-    
-    
+     
     public Float getDato(String elemento)
     {
         Float dato;
@@ -121,6 +117,5 @@ public class TablaAnalisis extends Tabla{
             return false;
         }
    }
-    
-    
+      
 }

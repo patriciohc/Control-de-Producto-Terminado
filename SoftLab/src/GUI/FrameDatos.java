@@ -35,7 +35,6 @@ import java.util.HashMap;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-
 public class FrameDatos extends javax.swing.JFrame 
 {
     private JTextArea txaDatos;
@@ -190,8 +189,6 @@ public class FrameDatos extends javax.swing.JFrame
     }
 */
 
-    
-
     DefaultTableModel getDtm()
     {
         return dtmDatos;
@@ -202,8 +199,6 @@ public class FrameDatos extends javax.swing.JFrame
         return producto;
     }
 
-
-
 }
 
 
@@ -211,8 +206,7 @@ public class FrameDatos extends javax.swing.JFrame
 // materaial
 
 class Aleatorios
-{
-    
+{   
     private FrameDatos frd;
     private LaboratorioDB lab;
     
@@ -227,7 +221,6 @@ class Aleatorios
     {   
         
     }
-    
     
     // llena dtm con numeros aleatorios
     // ramplza los datos dependiendo de su parametro remplazar
@@ -350,8 +343,7 @@ class Aleatorios
 	}
 	return sum;
     }
-        
-        
+             
     private HashMap getAleatorios(String material)
     {
         HashMap aleatorios =  new HashMap();

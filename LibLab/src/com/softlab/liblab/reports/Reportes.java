@@ -211,8 +211,7 @@ public class Reportes
         }
     } // fin concarPDFs
    */ 
-    
-    
+   
  // elimina las "/" y "\" del String recibido
     public static String corregirNombreFile(String nombre)
     {
@@ -225,9 +224,7 @@ public class Reportes
         }
         return String.valueOf(n).substring(0, j);
     }
-    
-    
-    
+     
 }
  
 

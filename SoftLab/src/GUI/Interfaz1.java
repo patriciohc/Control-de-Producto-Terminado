@@ -802,9 +802,8 @@ public class Interfaz1 extends javax.swing.JFrame {
                     popup.show(e.getComponent(), e.getX(), e.getY()); 
                 }
             }
-        });
-        // termina menu 
-   
+        });// termina menu 
+  
     // botones
        btGuardar.addActionListener(new ActionListener() {
        @Override
@@ -849,8 +848,7 @@ public class Interfaz1 extends javax.swing.JFrame {
                            Level.SEVERE, null, ex);
                }
        } }); 
-        
-        
+             
         btAnalisisAtras.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) 
@@ -950,15 +948,12 @@ public class Interfaz1 extends javax.swing.JFrame {
         });
       */  
         
-
  //***************** panel 2 ************************************************
-       
         javax.swing.DefaultComboBoxModel m = new javax.swing.DefaultComboBoxModel();
         int añoActual = new Fecha().getAño();
         for(int año = 2011; año <= añoActual; año++ ) {
             m.addElement(año);
         }
-
         ResultSet r = null;
         /*
         DefaultComboBoxModel items3 = new DefaultComboBoxModel();
@@ -1067,14 +1062,12 @@ public class Interfaz1 extends javax.swing.JFrame {
             }
         });
         
-        tbRegistros1.setModel(dtmRegistros1);
-        
-   */     
+        tbRegistros1.setModel(dtmRegistros1); */   
+
         /************** panel 2 Embarques **************************************/
         /*
          *  panel Embarques
-         */
-        
+         */      
         tbEmbarques.addKeyListener(new KeyAdapter()
         {
             @Override
@@ -1105,8 +1098,7 @@ public class Interfaz1 extends javax.swing.JFrame {
 
             }
         });
-        
-        
+             
         txtEmbFecha.setText(new Fecha().toString());
         txtFilas.addKeyListener(new KeyAdapter() {
             @Override
@@ -1150,8 +1142,7 @@ public class Interfaz1 extends javax.swing.JFrame {
                 llenarTablaEmb(); 
             }
         });
-        
-          
+              
         btEmbarquesOk.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) 
             {
@@ -1176,8 +1167,7 @@ public class Interfaz1 extends javax.swing.JFrame {
                 }
             }
         });
-
-         
+    
         btGuardarEmbarque.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -1225,7 +1215,6 @@ public class Interfaz1 extends javax.swing.JFrame {
             }
         });
 
-
         btEmbCertificados.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae)
@@ -1240,14 +1229,9 @@ public class Interfaz1 extends javax.swing.JFrame {
             }
         });
         
-        
-        /*here begins the three panel*/
-        
-        loadCmbProds();
-                
+        loadCmbProds();        
         tbGrupos.setModel(dtmGrupos);
         mostrarGrupos(null);
-        
         cmbPanel3Prods.addItemListener( new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent ie)
@@ -1492,7 +1476,6 @@ public class Interfaz1 extends javax.swing.JFrame {
 
     } // fin reIniComponets
     
-    
     private void cargarCmbClientes()
     {
         DefaultComboBoxModel items1 = new DefaultComboBoxModel();
@@ -1579,7 +1562,6 @@ public class Interfaz1 extends javax.swing.JFrame {
                             fileJasper);
     }
     
-    
     private void agregarNuevoMaterial(String nombre)
     {
 	Producto p = prods.getProducto(nombre);
@@ -1621,9 +1603,7 @@ public class Interfaz1 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(thiss, "El material no existe");
         }   		
     }
-    
-    
-    
+
     private void llenarTablaEmb()
     {
         dtmEmbarques1.clear();
@@ -1650,7 +1630,6 @@ public class Interfaz1 extends javax.swing.JFrame {
                 Integer.parseInt(idAnalisis), prods.getProducto(nombre), datos);
         }
     }
-    
     
     public void sgtAnalisisEnDtm(int idAnalisis)
     {
@@ -1700,8 +1679,7 @@ public class Interfaz1 extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null, "error: "+e);
          }
     }
-
-    
+  
     private void mostrarGrupos(ArrayList<Grupo> grupos) {   
         dtmGrupos.clear();
         java.sql.ResultSet rs = laboratorio.query("SELECT NOMBRE FROM grupos");
@@ -1766,14 +1744,11 @@ public class Interfaz1 extends javax.swing.JFrame {
             }
     }
 
-
     public TablaAnalisis getDtmAnalisis1()
     {
         return dtmAnalisis1;
     }
     
-    
-
     public String explorarDisco()
     {
 	JFileChooser chDir = new JFileChooser();
@@ -1819,8 +1794,6 @@ public class Interfaz1 extends javax.swing.JFrame {
         //map.put(ctrl_a , "accion_ctrl_a");
         //mapaAccion.put("accion_ctrl_a",Accion_CTRLA());
     }
-
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ScrollPanel3;
@@ -1884,7 +1857,6 @@ public class Interfaz1 extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private int lbPanel3IdProducto;
     //private Java2sAutoTextField txtPredictivo
-
 }
 
 

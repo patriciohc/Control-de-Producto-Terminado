@@ -42,13 +42,14 @@ public class Frame extends JFrame
     private final Tabla dtmRegistro = new TablaRegistro(
         new Object [][] {},
         new String []{"No Analisis", "Lote", "Cantidad","Cliente/Proveedor",
-                "Producto","Certificado"} );
+                "Producto","Certificado"
+        } );
     private final TablaAnalisis dtmAnalisis1 = new TablaAnalisis(
         new Object [][] {}, new String []{"Parametro", "Resultado"});
     private final Tabla dtmEmbarques1 = new Tabla();
     private final Tabla dtmGrupos = new Tabla(
         new Object [][] {},
-        new String []{"Nombre", "Incluir(s/n)"} );    
+        new String []{"Nombre", "Incluir(s/n)"});    
     private DefaultComboBoxModel itemsAgregar;
     private JTextComponent cmbTxt;
     private Fecha fecha;
@@ -95,7 +96,7 @@ public class Frame extends JFrame
     
     public static void main(String args[])
     {
-          try {
+        try {
             for (javax.swing.UIManager.LookAndFeelInfo info :
                 javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())){
@@ -121,7 +122,5 @@ public class Frame extends JFrame
             }
         });
         }
-
-
     
 }

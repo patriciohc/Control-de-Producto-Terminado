@@ -39,8 +39,7 @@ public class Bitacora implements Registro
                 + "CLIENTE_PROVEEDOR,CERTIFICADO,FECHA) VALUES ";
         es =  new ArrayList<Entrada>();
     }
-
-    
+  
     @Override
     public boolean save(Connection c) throws SQLException 
     {
