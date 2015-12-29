@@ -1,0 +1,106 @@
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Base de datos: `laboratorio`
+--
+CREATE database if NOT EXISTS laboratorio;
+use laboratorio;
+
+--
+-- Estructura de tabla para la tabla `producto`
+--
+CREATE TABLE IF NOT EXISTS `producto` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `NOMBRE` varchar(100) NOT NULL,
+  `CLIENTE_PROVEEDOR` varchar(50) DEFAULT NULL,
+  `TIPO` varchar(2) DEFAULT NULL,
+  `CADUCIDAD` int(11) DEFAULT NULL,
+  `FILE_JASPER` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
+
+--
+-- Estructura de tabla para la tabla `grupos`
+--
+CREATE TABLE IF NOT EXISTS `grupos` (
+  `NOMBRE` varchar(100) NOT NULL,
+  `TABLA` varchar(100) NOT NULL,
+  PRIMARY KEY (`NOMBRE`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Estructura de tabla para la tabla `producto_grupo`
+--
+CREATE TABLE IF NOT EXISTS `producto_grupo` (
+  `PRODUCTO` int NOT NULL,
+  `GRUPO` varchar(100) NOT NULL,
+  PRIMARY KEY (`PRODUCTO`,`GRUPO`),
+  KEY `PRODUCTO` (`PRODUCTO`),
+  KEY `GRUPO` (`GRUPO`),
+  FOREIGN KEY(`PRODUCTO`) REFERENCES producto(`ID`),
+  FOREIGN KEY(`GRUPO`) REFERENCES grupos(`NOMBRE`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Estructura de tabla para la tabla `registro`
+--
+CREATE TABLE IF NOT EXISTS `registro` (
+  `ID_ANALISIS` int(11) NOT NULL,
+  `PRODUCTO` int(11) NOT NULL,
+  `LOTE` varchar(10) DEFAULT NULL,
+  `CANTIDAD` int(11) DEFAULT NULL,
+  `CLIENTE_PROVEEDOR` varchar(100) DEFAULT NULL,
+  `CERTIFICADO` int(11) DEFAULT NULL,
+  `FECHA` date DEFAULT NULL,
+  PRIMARY KEY (`ID_ANALISIS`),
+  KEY `PRODUCTO` (`PRODUCTO`),
+  FOREIGN KEY(`PRODUCTO`) REFERENCES producto(`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Estructura de tabla para la tabla `clientes`
+--
+CREATE TABLE IF NOT EXISTS `clientes` (
+  `ID_CLIENTE` int(11) NOT NULL AUTO_INCREMENT,
+  `NOMBRE` varchar(100) NOT NULL,
+  `KEY_WORD` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID_CLIENTE`),
+  UNIQUE KEY `NOMBRE` (`NOMBRE`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Estructura de tabla para la tabla `embarque`
+--
+CREATE TABLE IF NOT EXISTS `embarque` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `FECHA` date NOT NULL,
+  `CLIENTE` INT(11) NOT NULL,
+  `REGISTRO` int(11) NOT NULL,
+  `CANTIDAD` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `ID_ANALISIS` (`ID_ANALISIS`),
+  KEY `CLIENTE` (`CLIENTE`),
+  FOREIGN KEY(`CLIENTE`) REFERENCES clientes(`ID`),
+  FOREIGN KEY(`REGISTRO`) REFERENCES registro(`ID_ANALISIS`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+--
+-- Estructura de tabla para la tabla `analisis`
+--
+CREATE TABLE IF NOT EXISTS `analisis` (
+  `NOMBRE_GRUPO` varchar(100) NOT NULL,
+  `ANALISIS` varchar(30) NOT NULL,
+  `PRI` int(11) NOT NULL,
+  PRIMARY KEY (`NOMBRE_GRUPO`,`ANALISIS`),
+  KEY `NOMBRE_GRUPO` (`NOMBRE_GRUPO`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

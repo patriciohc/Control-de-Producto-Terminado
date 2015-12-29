@@ -1,0 +1,2 @@
+#!/bin/bash
+java -jar /opt/softlab/SoftLab1.2.jar
