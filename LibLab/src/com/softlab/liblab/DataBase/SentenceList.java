@@ -40,9 +40,12 @@ public class SentenceList
     
 // regresa lo registrado con la fecha indicada
     public static String getRegistrosFecha(String f)
-    {     
-            return String.format("SELECT ID_ANALISIS, LOTE, CANTIDAD, CLIENTE_PROVEEDOR, NOMBRE, CERTIFICADO"
-                                          +" FROM registro WHERE FECHA LIKE '%s'  ORDER BY ID_ANALISIS", f);
+    {  
+        return String.format(
+            "SELECT ID_ANALISIS, LOTE, CANTIDAD, registro.CLIENTE_PROVEEDOR, "
+            +"producto.NOMBRE, CERTIFICADO "
+            +"FROM registro INNER JOIN producto ON producto.ID = registro.PRODUCTO "
+            +"WHERE FECHA LIKE '%s'  ORDER BY ID_ANALISIS", f);
     }
     
     // regresa lo registrado con el nombre indicado

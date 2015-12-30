@@ -217,12 +217,15 @@ public class LaboratorioDB
             //FROM EMBARQUE E INNER JOIN REGISTRO R ON (R.ID_ANALISIS = E.ID_ANALISIS) 
             //AND R.NOMBRE LIKE '%' AND CLIENTE LIKE '%' 
             //ORDER BY FECHA DESC, NOMBRE, ID_ANALISIS limit  20
-            String query = "SELECT ID, E.FECHA AS FECHA, E.CLIENTE AS CLIENTE, "
-                    + "E.ID_ANALISIS AS NO_ANALISIS, R.NOMBRE AS NOMBRE, "
-                    + "R.LOTE AS LOTE, E.CANTIDAD AS CANTIDAD FROM embarque "
-                    + "E INNER JOIN registro R ON (R.ID_ANALISIS = E.ID_ANALISIS)"
-                    + " AND R.NOMBRE LIKE "+producto+" AND CLIENTE LIKE "+cliente 
-                    + " ORDER BY FECHA DESC, NOMBRE, E.ID_ANALISIS limit  "+limit;          
+            String query = 
+                "SELECT E.ID, E.FECHA AS FECHA, E.CLIENTE AS CLIENTE, "
+                + "E.ID_ANALISIS AS NO_ANALISIS, P.NOMBRE AS NOMBRE, "
+                + "R.LOTE AS LOTE, E.CANTIDAD AS CANTIDAD "
+                + "FROM registro R "
+                + "INNER JOIN embarque E ON (R.ID_ANALISIS = E.ID_ANALISIS) "
+                + "INNER JOIN producto P ON (R.PRODUCTO = P.ID) "
+                + "WHERE P.NOMBRE LIKE "+producto+" AND CLIENTE LIKE "+cliente 
+                + " ORDER BY FECHA DESC, NOMBRE, E.ID_ANALISIS limit  "+limit;          
             return new Sentence(query, m_sC).openExec();
         } catch(Exception e) {
             System.out.println("error en funcion getEmbarques: "+e); 

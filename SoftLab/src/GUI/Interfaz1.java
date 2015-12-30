@@ -826,16 +826,16 @@ public class Interfaz1 extends javax.swing.JFrame {
                                     (String)dtmRegistro.getValueAt(rows[i], 0));
                             String nombre = (String)dtmRegistro.getValueAt(
                                     rows[i], 4);
-                            Fecha lote = new Fecha((String)dtmRegistro.getValueAt(
-                                    rows[i], 1)); //LOTE
+                            String lote = (String)dtmRegistro.getValueAt(
+                                    rows[i], 1); //LOTE
                             String cantidad = (String)dtmRegistro.getValueAt(
                                     rows[i], 2); //CANTIDAD
                             String  cliente = (String)dtmRegistro.getValueAt(
                                     rows[i], 3);//CLIENT_PROV
                             String  certificado = (String)dtmRegistro.getValueAt(
                                     rows[i], 5);      //CERTIFICADO
-                            bt.addElement(idAnalisis, nombre, lote, cantidad, 
-                                    cliente, certificado);
+                            bt.addElement(idAnalisis, prods.getProducto(nombre), 
+                                    lote, cantidad, cliente, certificado, fecha);
                        
                         } catch (Exception ex) {
                             JOptionPane.showMessageDialog(null, "Datos no validos");

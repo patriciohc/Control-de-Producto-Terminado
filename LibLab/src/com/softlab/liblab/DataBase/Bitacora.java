@@ -35,7 +35,7 @@ public class Bitacora implements Registro
     public Bitacora(ProductList prods)
     {
         this.prods = prods;
-        query =  "INSERT INTO registro(ID_ANALISIS, NOMBRE,LOTE,CANTIDAD,"
+        query =  "INSERT INTO registro(ID_ANALISIS, PRODUCTO, LOTE,CANTIDAD,"
                 + "CLIENTE_PROVEEDOR,CERTIFICADO,FECHA) VALUES ";
         es =  new ArrayList<Entrada>();
     }
@@ -44,14 +44,14 @@ public class Bitacora implements Registro
     public boolean save(Connection c) throws SQLException 
     {
         query = query.substring(0,query.length()-1);
-        query = query   + "ON DUPLICATE KEY UPDATE NOMBRE=VALUES(NOMBRE), "
+        query = query   + "ON DUPLICATE KEY UPDATE PRODUCTO=VALUES(PRODUCTO), "
                         + "LOTE=VALUES(LOTE), CANTIDAD=VALUES(CANTIDAD), "
                         + "CLIENTE_PROVEEDOR=VALUES(CLIENTE_PROVEEDOR), "
                         + "CERTIFICADO=VALUES(CERTIFICADO), FECHA=(FECHA)";
         new Sentence(query,c).exec();
         String query1;
         for (Entrada e: es) {
-            ArrayList<Grupo> grupos = prods.getProducto(e.nombre).getGrupos();
+            ArrayList<Grupo> grupos = prods.getProducto(e.producto.getNombre()).getGrupos();
             for (Grupo g: grupos) {
                 try {
                     query1 = String.format("INSERT INTO %s(ID_ANALISIS) VALUES(%d)",
@@ -70,24 +70,24 @@ public class Bitacora implements Registro
         throw new UnsupportedOperationException("Not supported yet."); 
     }
     
-    public void addElement(int idAnalisis, String nombre, Fecha lote, 
-                        String cantidad, String cliente, String certificado)
+    public void addElement(int idAnalisis, Producto producto, String lote, 
+                        String cantidad, String cliente, String certificado, Fecha fecha)
     {
         query = query + String.format("( %d,'%s','%s',%s,'%s',%s,'%s' ),"
-                        ,idAnalisis,nombre,lote.getLote(),cantidad,cliente,
-                        certificado,lote.getFormMySQL() );
-        es.add(new Entrada(idAnalisis, nombre));
+                        ,idAnalisis, producto.getId(), lote, cantidad,cliente,
+                        certificado,fecha.getFormMySQL() );
+        es.add(new Entrada(idAnalisis, producto));
     }
     
     class Entrada
     {
         int id = 0;
-        String nombre = "";
+        Producto producto;
         
-        public Entrada(int id, String nombre)
+        public Entrada(int id, Producto producto)
         {
             this.id = id;
-            this.nombre = nombre;
+            this.producto = producto;
         }
     }
     

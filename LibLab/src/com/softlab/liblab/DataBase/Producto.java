@@ -173,9 +173,10 @@ public class Producto implements Registro
                     + "VALUES ('%s', '%s', '%s', %d, '%s')", nombre, 
                     clienteProveedor, tipo, caducidad, fileJasper);
         new Sentence(query, c).exec();
-        query =  String.format("INSERT INTO esp_rangos(MATERIAL, MIN_MAX)"
-                    + "VALUES ('%s', 0),('%s', 1)",nombre,nombre);
-        new Sentence(query, c).exec();
+        /* especificaciones del producto */
+        //query =  String.format("INSERT INTO esp_rangos(MATERIAL, MIN_MAX)"
+        //           + "VALUES ('%s', 0),('%s', 1)",nombre,nombre);
+        //new Sentence(query, c).exec();
         System.out.println("agregando grupos");
         for (String name: nameGrupos) {
             query = String.format(" INSERT INTO producto_grupo(NOMBRE_PRODUCTO, "
@@ -206,9 +207,12 @@ public class Producto implements Registro
     
     public boolean delete(Connection c) throws SQLException
     {
-        ResultSet rs =  new Sentence(String.format("SELECT COUNT(*) "
-                                    +"FROM registro "
-                                    +"WHERE NOMBRE='%s'",nombre), c).openExec();
+        /*comprueba que no exista registros con este nombre de producto */
+        ResultSet rs =  new Sentence(String.format(
+                        "SELECT COUNT(*) "
+                        +"FROM registro "
+                        +"INNER JOIN producto ON registro.PRODUCTO = producto.ID "
+                        +"WHERE producto.NOMBRE='%s'",nombre), c).openExec();
         if (!rs.next()) 
             return false;
         if(rs.getInt(1) != 0)
